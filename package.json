@@ -1,10 +1,10 @@
 {
-  "name": "node-lifx",
-  "description": "Node.js implementation of the LIFX protocol",
+  "name": "qz-node-lifx",
+  "description": "An enhanced version of node-lifx, timeout add on each call",
   "version": "0.6.0",
-  "author": "Marius Rumpf <marius@mariusrumpf.de>",
+  "author": "Qizhong Zhu pluto.shu@gmail.com",
   "bugs": {
-    "url": "https://github.com/MariusRumpf/node-lifx/issues"
+    "url": "https://github.com/plotozhu/node-lifx/issues"
   },
   "dependencies": {
     "eventemitter3": "^1.1.0",
@@ -25,7 +25,7 @@
     "lib": "lib",
     "example": "example"
   },
-  "homepage": "https://github.com/MariusRumpf/node-lifx#readme",
+  "homepage": "https://github.com/plotozhu/node-lifx#readme",
   "keywords": [
     "bulb",
     "lifx",
@@ -37,7 +37,7 @@
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MariusRumpf/node-lifx.git"
+    "url": "git+https://github.com/plotozhu/node-lifx.git"
   },
   "scripts": {
     "lint": "eslint lib/ test/ example/ cli.js",

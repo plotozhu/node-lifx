@@ -7,6 +7,29 @@
 [![Inline docs](https://inch-ci.org/github/mariusrumpf/node-lifx.svg?branch=master)](https://inch-ci.org/github/mariusrumpf/node-lifx)
 [![codecov.io](https://img.shields.io/codecov/c/github/MariusRumpf/node-lifx/master.svg)](https://codecov.io/github/MariusRumpf/node-lifx?branch=master)
 
+!!! Fork and enhanced from node-lifx !!!!
+There is a minor bug in node-lifx to our usage: if no packet recevied, the caller's callback is not fired. but sometimes we need explicit result to do others.
+in the origin driver, when promised, "then" clause will not be fired if no package received!
+
+This is the example:
+
+```js
+LIFXDriver.prototype.powerOff = function (devId) {
+    var light = this.lights[devId] && this.lights[devId].handle ;
+    if(light){
+        return Q.nbind(light.off,light)(0).then(function(){
+            this.updateEndpoint(devId,1,false);
+            setTimeout(function(){
+                this.updateReadInd(devId,1);
+            }.bind(this),20);
+            return {success:true}
+        }.bind(this))
+    }else{
+        return Q.resolve({success:false,reason:'设备不存在'});
+    }
+
+}
+```
 
 A Node.js implementation of the [LIFX protocol](https://github.com/LIFX/lifx-protocol-docs). Developed to work with a minimum firmware version of 2.0.
 
